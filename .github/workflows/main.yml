@@ -20,9 +20,5 @@ jobs:
       run: |
         npm ci
         npm test
-    # - name: Run the test
-    #   run: npm test
-      # env:
-      #   CI : true
     
         
