@@ -1,0 +1,7 @@
+.paraCol{
+    cursor: pointer;    
+}
+
+.paraCol:hover{
+    background-color: #cccccc;
+}
