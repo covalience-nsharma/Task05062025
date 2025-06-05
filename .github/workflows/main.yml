@@ -36,5 +36,5 @@ jobs:
         env: 
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker buildx build -t ${{ secrets.DOCKERHUB_USERNAME }}/task05062025:${IMAGE_TAG}
+          docker buildx build -t ${{ secrets.DOCKERHUB_USERNAME }}/task05062025:${IMAGE_TAG} .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/task05062025:${IMAGE_TAG}
