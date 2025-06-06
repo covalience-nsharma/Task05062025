@@ -7,7 +7,7 @@ FROM base AS client-base
 COPY package.json ./
 RUN --mount=type=cache,id=npm,target=/root/.npm \
     npm install
-COPY ..
+# COPY ..
 
 FROM client-base AS client-dev
 CMD ["npm", "start"]
