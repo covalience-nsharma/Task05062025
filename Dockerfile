@@ -1,5 +1,5 @@
-ARG NODE_VERSION = 20
-FROM node:${NODE_VERSION} AS base
+# ARG NODE_VERSION = 20
+FROM node:20 AS base
 
 WORKDIR /usr/local/app
 
