@@ -1,13 +1,13 @@
-FROM node:20 AS base
+ARG NODE_VERSION = 20
+FROM node:${NODE_VERSION} AS base
+
 WORKDIR /usr/local/app
 
-FROM base AS client-base
-# For a non-root user (NODE)
+FROM base AS client-base    
+COPY package.json ./
 RUN --mount=type=cache,id=npm,target=/root/.npm \
     npm install
-# For npm    
-RUN --mount=type=cache,id=npm,target=/home/node/.npm \
-    npm install
+COPY ..
 
 FROM client-base AS client-dev
 CMD ["npm", "start"]
