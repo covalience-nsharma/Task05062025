@@ -13,4 +13,6 @@ FROM client-base AS client-dev
 CMD ["npm", "start"]
 
 FROM client-base AS client-build
-RUN serve -s build
+RUN |
+ npm run build
+ serve -s build
