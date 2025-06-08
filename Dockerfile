@@ -1,17 +1,19 @@
 # ARG NODE_VERSION = 20
 FROM node:20 AS base
 
-WORKDIR /usr/local/app
+WORKDIR /app
 
-FROM base AS client-base    
+#FROM base AS client-base    
 COPY package.json ./
 RUN --mount=type=cache,id=npm,target=/root/.npm \
     npm install
-# COPY ..
+COPY . /app
+RUN npm run build
 
-FROM client-base AS client-dev
-CMD ["npm", "start"]
+FROM nginx:latest AS runtime
 
-FROM client-base AS client-build
-CMD ["npm", "run","build"]
-CMD ["serve", "-s","build"]
+COPY --from=base /app/build /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
