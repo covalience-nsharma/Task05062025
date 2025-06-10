@@ -48,6 +48,6 @@ jobs:
           echo "${MY_SECRET}" > mysecret
           chmod 400 mysecret
           ssh -o StrictHostKeyChecking=no -i mysecret ubuntu@54.167.123.84 << 'EOF'
-            sudo docker pull task05062025:${IMAGE_TAG}
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/task05062025:${IMAGE_TAG}
             sudo docker run -d -p 80:80 task05062025
           EOF
