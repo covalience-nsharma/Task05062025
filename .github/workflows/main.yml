@@ -39,15 +39,15 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/task05062025:${IMAGE_TAG} .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/task05062025:${IMAGE_TAG}
-       - name: ssh-docker
+      - name: ssh-docker
           # You may pin to the exact commit or the version.
           # uses: prvious/ssh-docker@de19b5d90879d262b04fc8a34b8aa69f71c8178e
-         uses: prvious/ssh-docker@v1
-         with:
+        uses: prvious/ssh-docker@v1
+        with:
             # Docker host to connect to
-            remote_host: ssh://${{ secrets.SSH_USERNAME }}
+          remote_host: ssh://${{ secrets.SSH_USERNAME }}
             # SSH public key of the server
-            ssh_public_key: # optional
+          ssh_public_key: # optional
             # SSH private key to use to connect
-            ssh_private_key: ${{ secrets.MY_SECRET }}
+          ssh_private_key: ${{ secrets.MY_SECRET }}
         
