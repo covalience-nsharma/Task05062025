@@ -47,7 +47,7 @@ jobs:
             # Docker host to connect to
           remote_host: ssh://${{ secrets.SSH_USERNAME }}
             # SSH public key of the server
-          ssh_public_key: # optional
+          #ssh_public_key: # optional
             # SSH private key to use to connect
           ssh_private_key: ${{ secrets.MY_SECRET }}
         
