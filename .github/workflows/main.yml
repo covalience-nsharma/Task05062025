@@ -42,12 +42,16 @@ jobs:
       
       - name: Setup SSH
         env:
+          DOCKER_PAT: ${{ secrets.DOCKERHUB_TOKEN }}
           MY_SECRET: ${{ secrets.MY_SECRET }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
           echo "${MY_SECRET}" > mysecret
           chmod 400 mysecret
+          echo "${DOCKER_PAT}" > docker_pat
+          chmod 400 docker_pat
           ssh -o StrictHostKeyChecking=no -i mysecret ubuntu@54.167.123.84 << 'EOF'
+            cat docker_pat | docker login -u devnsharma --password-stdin
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/task05062025:${IMAGE_TAG}
             sudo docker run -d -p 80:80 task05062025
           EOF
