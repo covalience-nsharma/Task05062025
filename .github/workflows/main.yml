@@ -42,9 +42,9 @@ jobs:
       
       - name: Setup SSH
         env:
-          ${{ secrets.MY_SECRET }}
+          MY_SECRET: ${{ secrets.MY_SECRET }}
         run: |
-          echo "${{ secrets.MY_SECRET }}" > mysecret.txt
+          echo "${MY_SECRET}" > mysecret.txt
           chmod 400 mysecret.txt
           ssh -o StrictHostKeyChecking=no -i mysecret.txt ubuntu@54.167.123.84 << 'EOF'
             sudo docker pull nginx:latest
