@@ -41,6 +41,8 @@ jobs:
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/task05062025:${IMAGE_TAG}
       
       - name: Setup SSH
+        env:
+          ${{ secrets.MY_SECRET }}
         run: |
           echo "${{ secrets.MY_SECRET }}" > mysecret.txt
           chmod 400 mysecret.txt
