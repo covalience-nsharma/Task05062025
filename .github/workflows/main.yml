@@ -57,6 +57,6 @@ jobs:
             sudo docker pull ${DOCKERHUB_USERNAME}/task05062025:${IMAGE_TAG}
             sudo docker stop training.covalience.tech
             sudo docker rm training.covalience.tech
-            sudo docker run -d --name training.covalience.tech -p 80:80  ${DOCKERHUB_USERNAME}/task05062025:${IMAGE_TAG}
+            sudo docker run -d --name training.covalience.tech -p 3000:80  ${DOCKERHUB_USERNAME}/task05062025:${IMAGE_TAG}
             # sudo docker run -d -p 80:80 --name task05062025_container_12062025 ${DOCKERHUB_USERNAME}/task05062025:${IMAGE_TAG}
           EOF
