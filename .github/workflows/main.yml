@@ -55,5 +55,5 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i mysecret ubuntu@training.covalience.tech <<EOF
             echo "${DOCKER_PAT}" | docker login -u ${DOCKERHUB_USERNAME} --password-stdin
             sudo docker pull ${DOCKERHUB_USERNAME}/task05062025:${IMAGE_TAG}
-            sudo docker run -d -p 3050:80 --name task05062025_container_new1 ${DOCKERHUB_USERNAME}/task05062025:${IMAGE_TAG}
+            sudo docker run -d -p 80:80 --name task05062025_container_12062025 ${DOCKERHUB_USERNAME}/task05062025:${IMAGE_TAG}
           EOF
